@@ -1,27 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Rally Ginjinha</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 { color: #333; }
-  </style>
-</head>
 <body>
   <h1>🍒🍒🍒 Edição VII Rally Ginjinha 🍒🍒🍒</h1>
-  <p> A carregar... </p>
 
-  <!-- <p>This site is hosted on GitHub Pages.</p> -->
-  
+  <p>A carregar...</p>
+
+  <h2 id="countdown"></h2>
+
   <video autoplay loop muted playsinline>
     <source src="index_video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+  <script>
+    const targetDate = new Date("2026-06-10T18:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML =
+          "🍒 O Rally Ginjinha já começou! 🍒";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${days} dias, ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
-</html>
